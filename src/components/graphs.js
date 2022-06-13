@@ -135,7 +135,7 @@ function Graphs() {
                                         (val1, ind1) => (
                                             <td>
                                                 {val[1].indexOf(val1[0]) === -1
-                                                    ? ""
+                                                    ? "Worked"
                                                     : "Error"}
                                             </td>
                                         )

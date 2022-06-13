@@ -2,9 +2,14 @@
 // import * as d3 from "d3";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import data from "./display.csv";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { auth } from "./firebase";
+import Login from "./Login";
+import NavbarComp from "./NavbarComp";
 import Graphs from "./components/graphs";
+import Home from "./Home";
+// import data from "./display.csv";
+
 // import {
 //     LineChart,
 //     Line,
@@ -16,6 +21,20 @@ import Graphs from "./components/graphs";
 // } from "recharts";
 
 function App() {
+    console.log(auth);
+    return (
+        <>
+            <NavbarComp />
+            <Router>
+                <div className="App">
+                    <Routes>
+                        <Route exact path="/login" element={<Login />} />
+                        <Route path="/" element={<Home />} />
+                    </Routes>
+                </div>
+            </Router>
+        </>
+    );
     // let d = [];
 
     // const [data1, setdata1] = useState([]);
@@ -85,175 +104,8 @@ function App() {
     //     onReld();
     //     console.log(errs);
     // }, []);
-    return (
-        <div className="App">
-            <Navbar style={{ width: "100%" }} bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand href="#home">Vehicle Monitoring</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home">Login</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
-            <Graphs />
-            {/* <LineChart
-                width={500}
-                height={300}
-                data={data1}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis
-                    label={{
-                        value: "speed(rpm)",
-                        angle: -90,
-                        position: "insideBottomLeft",
-                        offset: 0,
-                    }}
-                />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="val" stroke="#82ca9d" />
-            </LineChart>
 
-            <LineChart
-                width={500}
-                height={300}
-                data={data2}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis
-                    label={{
-                        value: "mapped_actual_motCur",
-                        angle: -90,
-                        position: "insideBottomLeft",
-                        offset: 0,
-                    }}
-                />
-                <Tooltip />
-                <Legend />
-
-                <Line type="monotone" dataKey="val" stroke="#82ca9d" />
-            </LineChart>
-            <LineChart
-                width={500}
-                height={300}
-                data={data3}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis
-                    label={{
-                        value: "mapped_actual_batVol",
-                        angle: -90,
-                        position: "insideBottomLeft",
-                        offset: 0,
-                    }}
-                />
-                <Tooltip />
-                <Legend />
-
-                <Line type="monotone" dataKey="val" stroke="#82ca9d" />
-            </LineChart>
-            <LineChart
-                width={500}
-                height={300}
-                data={data4}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis
-                    label={{
-                        value: "throttle_signal",
-                        angle: -90,
-                        position: "insideBottomLeft",
-                        offset: 0,
-                    }}
-                />
-                <Tooltip />
-                <Legend />
-
-                <Line type="monotone" dataKey="val" stroke="#82ca9d" />
-            </LineChart>
-            <LineChart
-                width={500}
-                height={300}
-                data={data5}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis
-                    label={{
-                        value: "actual_controller_temperature",
-                        angle: -90,
-                        position: "insideBottomLeft",
-                        offset: 0,
-                    }}
-                />
-                <Tooltip />
-                <Legend />
-
-                <Line type="monotone" dataKey="val" stroke="#82ca9d" />
-            </LineChart>
-            <LineChart
-                width={500}
-                height={300}
-                data={data6}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis
-                    label={{
-                        value: "actual_motor_temperature",
-                        angle: -90,
-                        position: "insideBottomLeft",
-                        offset: 0,
-                    }}
-                />
-                <Tooltip />
-                <Legend />
-
-                <Line type="monotone" dataKey="val" stroke="#82ca9d" />
-            </LineChart> */}
-        </div>
-    );
+    // console.log(auth);
 }
 
 export default App;
