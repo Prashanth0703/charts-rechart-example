@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { auth } from "./firebase";
 import Login from "./Login";
 import NavbarComp from "./NavbarComp";
-import Graphs from "./components/graphs";
 import Home from "./Home";
 // import data from "./display.csv";
 
